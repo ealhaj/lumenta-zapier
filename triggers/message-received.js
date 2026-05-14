@@ -46,7 +46,6 @@ module.exports = {
     label: 'New Inbound Message',
     description:
       'Triggers when a customer sends a WhatsApp message to one of your senders.',
-    important: true,
   },
   operation: {
     type: 'hook',
