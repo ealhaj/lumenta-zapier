@@ -10,10 +10,11 @@ module.exports = {
     inputFields: [
       {
         key: 'clientId',
-        label: 'Client ID',
+        label: 'Client',
         required: true,
+        dynamic: 'clients.id.label',
         helpText:
-          'The Lumenta client UUID. Chain a "Find Client by Phone" search beforehand to resolve a phone to an id.',
+          'Pick a client, or chain a "Find Client by Phone" search before this step to resolve a phone number to an id.',
       },
     ],
     perform: async (z, bundle) => {

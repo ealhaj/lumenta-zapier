@@ -16,6 +16,8 @@ const clientCreated = require('./triggers/client-created');
 const getSenders = require('./triggers/_get-senders');
 const getTemplates = require('./triggers/_get-templates');
 const getSegments = require('./triggers/_get-segments');
+const getClients = require('./triggers/_get-clients');
+const getBroadcasts = require('./triggers/_get-broadcasts');
 
 // Creates (actions).
 const sendTextMessage = require('./creates/send-text-message');
@@ -56,6 +58,8 @@ module.exports = {
     [getSenders.key]: getSenders,
     [getTemplates.key]: getTemplates,
     [getSegments.key]: getSegments,
+    [getClients.key]: getClients,
+    [getBroadcasts.key]: getBroadcasts,
   },
 
   creates: {

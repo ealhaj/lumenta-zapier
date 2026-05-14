@@ -10,10 +10,11 @@ module.exports = {
     inputFields: [
       {
         key: 'clientId',
-        label: 'Client ID',
+        label: 'Client',
         required: true,
+        dynamic: 'clients.id.label',
         helpText:
-          'The Lumenta client UUID. Use a "Find Client by Phone" search step beforehand to resolve a phone number to an id.',
+          'Pick a client, or chain a "Find Client by Phone" search before this step to resolve a phone number to an id.',
       },
       { key: 'profileName', label: 'Profile name', required: true },
     ],

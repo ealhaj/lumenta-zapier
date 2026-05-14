@@ -13,7 +13,12 @@ module.exports = {
         required: true,
         dynamic: 'segments.id.label',
       },
-      { key: 'clientId', label: 'Client ID', required: true },
+      {
+        key: 'clientId',
+        label: 'Client',
+        required: true,
+        dynamic: 'clients.id.label',
+      },
     ],
     perform: async (z, bundle) => {
       const response = await z.request({

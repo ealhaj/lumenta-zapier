@@ -16,10 +16,11 @@ module.exports = {
       },
       {
         key: 'clientId',
-        label: 'Client ID',
+        label: 'Client',
         required: true,
+        dynamic: 'clients.id.label',
         helpText:
-          'Use a "Find Client by Phone" search beforehand to resolve a phone number to a client id.',
+          'Pick a client, or chain a "Find Client by Phone" search before this step to resolve a phone number to an id.',
       },
     ],
     perform: async (z, bundle) => {

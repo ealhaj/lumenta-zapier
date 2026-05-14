@@ -10,8 +10,9 @@ module.exports = {
     inputFields: [
       {
         key: 'broadcastId',
-        label: 'Broadcast ID',
+        label: 'Broadcast',
         required: true,
+        dynamic: 'broadcasts.id.label',
       },
       {
         key: 'recipient',
