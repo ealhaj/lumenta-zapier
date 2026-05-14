@@ -12,7 +12,11 @@
 const addApiKeyHeader = (request, z, bundle) => {
   if (bundle && bundle.authData && bundle.authData.apiKey) {
     request.headers = request.headers || {};
+    // Authorization is the documented contract. X-Lumenta-Api-Key is
+    // attached redundantly so requests authenticate cleanly against API
+    // versions that pre-date the Bearer-token support in JwtAuthGuard.
     request.headers.Authorization = `Bearer ${bundle.authData.apiKey}`;
+    request.headers['X-Lumenta-Api-Key'] = bundle.authData.apiKey;
   }
   return request;
 };

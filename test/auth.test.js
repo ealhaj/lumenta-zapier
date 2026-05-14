@@ -14,10 +14,14 @@ const authData = {
   name: 'Test User',
 };
 
-test('authentication test hits /v1/zapier/me with Bearer token', async () => {
+test('authentication test hits /v1/zapier/me with both auth headers', async () => {
+  // Middleware attaches both headers for compatibility — Authorization
+  // is the documented contract, X-Lumenta-Api-Key keeps older API
+  // builds happy. The mock requires *both* be present.
   nock('https://api.lumenta.test', {
     reqheaders: {
       authorization: `Bearer ${authData.apiKey}`,
+      'x-lumenta-api-key': authData.apiKey,
     },
   })
     .get('/v1/zapier/me')
