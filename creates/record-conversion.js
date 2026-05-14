@@ -2,15 +2,15 @@ module.exports = {
   key: 'record_conversion',
   noun: 'Conversion',
   display: {
-    label: 'Record Broadcast Conversion',
+    label: 'Record Campaign Conversion',
     description:
-      'Attribute a conversion event to a Lumenta broadcast. Use this to feed downstream-revenue or click signals back into Lumenta from any source (your CRM, store, analytics tool).',
+      'Attribute a conversion event to a Lumenta campaign. Use this to feed downstream-revenue or click signals back into Lumenta from any source (your CRM, store, analytics tool).',
   },
   operation: {
     inputFields: [
       {
         key: 'broadcastId',
-        label: 'Broadcast',
+        label: 'Campaign',
         required: true,
         dynamic: 'broadcasts.id.label',
       },
@@ -18,7 +18,7 @@ module.exports = {
         key: 'recipient',
         label: 'Recipient phone number',
         required: true,
-        helpText: 'E.164 with digits only — the same phone that received the broadcast.',
+        helpText: 'E.164 with digits only — the same phone that received the campaign.',
       },
       {
         key: 'eventType',

@@ -1,10 +1,10 @@
 module.exports = {
   key: 'create_broadcast',
-  noun: 'Broadcast',
+  noun: 'Campaign',
   display: {
-    label: 'Create Broadcast',
+    label: 'Create Campaign',
     description:
-      'Create and send a WhatsApp broadcast to a segment using an approved template.',
+      'Create and send a WhatsApp campaign to a segment using an approved template.',
   },
   operation: {
     inputFields: [
@@ -29,7 +29,7 @@ module.exports = {
       },
       {
         key: 'name',
-        label: 'Broadcast name',
+        label: 'Campaign name',
         required: false,
         helpText: 'Optional internal label shown in the Lumenta dashboard.',
       },

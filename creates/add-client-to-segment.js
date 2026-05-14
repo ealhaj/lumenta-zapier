@@ -4,7 +4,7 @@ module.exports = {
   display: {
     label: 'Add Client to Segment',
     description:
-      'Add an existing client to a Lumenta segment. The segment can then be used as the recipient list of a broadcast.',
+      'Add an existing client to a Lumenta segment. The segment can then be used as the recipient list of a campaign.',
   },
   operation: {
     inputFields: [

@@ -24,10 +24,10 @@ const perform = async (z, bundle) => {
 
 module.exports = {
   key: 'broadcasts',
-  noun: 'Broadcast',
+  noun: 'Campaign',
   display: {
-    label: 'List recent broadcasts',
-    description: 'Internal — populates the broadcast dropdown in actions.',
+    label: 'List recent campaigns',
+    description: 'Internal — populates the campaign dropdown in actions.',
     hidden: true,
   },
   operation: {

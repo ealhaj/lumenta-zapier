@@ -34,11 +34,11 @@ const SAMPLE = {
 
 module.exports = {
   key: 'broadcast_completed',
-  noun: 'Broadcast',
+  noun: 'Campaign',
   display: {
-    label: 'Broadcast Completed',
+    label: 'Campaign Completed',
     description:
-      'Triggers when a broadcast campaign finishes sending. Fires once per broadcast with the final tally.',
+      'Triggers when a campaign finishes sending. Fires once per campaign with the final tally.',
   },
   operation: {
     type: 'hook',
@@ -48,9 +48,9 @@ module.exports = {
     performList,
     sample: SAMPLE,
     outputFields: [
-      { key: 'id', label: 'Broadcast ID' },
+      { key: 'id', label: 'Campaign ID' },
       { key: 'status', label: 'Final Status' },
-      { key: 'type', label: 'Broadcast Type' },
+      { key: 'type', label: 'Campaign Type' },
       { key: 'totalRecipients', label: 'Total Recipients', type: 'integer' },
       { key: 'sent', label: 'Sent', type: 'integer' },
       { key: 'failed', label: 'Failed', type: 'integer' },

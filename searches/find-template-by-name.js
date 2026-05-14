@@ -4,7 +4,7 @@ module.exports = {
   display: {
     label: 'Find Template by Name',
     description:
-      'Look up an approved Lumenta template by its WhatsApp name. Returns the template id needed by Send Template Message / Create Broadcast.',
+      'Look up an approved Lumenta template by its WhatsApp name. Returns the template id needed by Send Template Message / Create Campaign.',
   },
   operation: {
     inputFields: [

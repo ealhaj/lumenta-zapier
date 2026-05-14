@@ -42,9 +42,9 @@ module.exports = {
   key: 'conversion_recorded',
   noun: 'Conversion',
   display: {
-    label: 'Broadcast Conversion Recorded',
+    label: 'Campaign Conversion Recorded',
     description:
-      'Triggers when a recipient takes a tracked action on a broadcast — delivered, read, replied, clicked, or converted.',
+      'Triggers when a recipient takes a tracked action on a campaign — delivered, read, replied, clicked, or converted.',
   },
   operation: {
     type: 'hook',
@@ -55,7 +55,7 @@ module.exports = {
     sample: SAMPLE,
     outputFields: [
       { key: 'id', label: 'Conversion ID' },
-      { key: 'broadcastId', label: 'Broadcast ID' },
+      { key: 'broadcastId', label: 'Campaign ID' },
       { key: 'eventType', label: 'Event Type' },
       { key: 'recipient', label: 'Recipient Phone' },
       { key: 'createdAt', label: 'Created At', type: 'datetime' },
