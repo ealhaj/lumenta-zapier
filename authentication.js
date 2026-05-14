@@ -18,7 +18,7 @@ module.exports = {
       required: true,
       type: 'password',
       helpText:
-        'Generate one at app.lumenta.co → Settings → API keys. Use the "Zapier bundle" preset to pre-fill the required scopes.',
+        'Generate one on the [API Keys](https://lumenta.co/settings/api-keys) page in your Lumenta dashboard. Use the "Zapier bundle" preset to pre-fill the required scopes.',
     },
     {
       key: 'baseUrl',
@@ -26,7 +26,7 @@ module.exports = {
       required: false,
       default: 'https://api.lumenta.co',
       helpText:
-        'Leave as default unless you are on a self-hosted Lumenta deployment.',
+        'Leave as default unless you are on a self-hosted Lumenta deployment. See the [self-hosting guide](https://docs.lumenta.co/self-hosting) for details.',
     },
   ],
   // Connection label shown in Zapier's "My Apps" panel. /v1/zapier/me
