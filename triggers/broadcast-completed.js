@@ -7,7 +7,7 @@ const {
 const performList = async (z, bundle) => {
   const response = await z.request({
     url: `${bundle.authData.baseUrl}/v1/broadcasts`,
-    params: { status: 'COMPLETED', limit: 3 },
+    params: { status: 'completed', limit: 3 },
   });
   return (response.data && response.data.data) || [];
 };
