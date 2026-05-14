@@ -5,7 +5,7 @@
   "description": "Lumenta integration for Zapier — connect WhatsApp Business messaging to 8,000+ apps.",
   "main": "index.js",
   "scripts": {
-    "test": "node --test test/**/*.test.js",
+    "test": "node --test test/*.test.js",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "validate": "zapier validate",

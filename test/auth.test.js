@@ -33,8 +33,8 @@ test('authentication test hits /v1/zapier/me with Bearer token', async () => {
     authData,
   });
 
-  assert.equal(response.data.email, 'test@example.com');
-  assert.equal(response.data.activeSenderCount, 2);
+  assert.equal(response.email, 'test@example.com');
+  assert.equal(response.activeSenderCount, 2);
   assert.ok(nock.isDone());
 });
 
