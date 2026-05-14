@@ -9,7 +9,44 @@
  * doesn't blow up — Zapier's runtime calls authentication.test with
  * the just-submitted form values already populated.
  */
+// D026 — manually validate the user-entered baseUrl so a malformed or
+// hostile value (e.g. `http://`, `https://evil.example/api`, or one with
+// embedded credentials) cannot be used to redirect requests away from
+// Lumenta. Allowed: `https://<host>` with no path, query, fragment, or
+// userinfo. The hosted default (https://api.lumenta.co) and self-hosted
+// deployments on a custom domain both pass.
+const assertValidBaseUrl = (z, baseUrl) => {
+  let parsed;
+  try {
+    parsed = new URL(baseUrl);
+  } catch (_e) {
+    throw new z.errors.Error(
+      `Invalid Base URL "${baseUrl}". Expected an https:// URL like https://api.lumenta.co.`,
+      'INVALID_BASE_URL',
+      400,
+    );
+  }
+  const pathIsRoot = parsed.pathname === '' || parsed.pathname === '/';
+  if (
+    parsed.protocol !== 'https:' ||
+    parsed.username ||
+    parsed.password ||
+    parsed.search ||
+    parsed.hash ||
+    !pathIsRoot
+  ) {
+    throw new z.errors.Error(
+      `Invalid Base URL "${baseUrl}". Expected an https:// URL like https://api.lumenta.co with no path, query, or credentials.`,
+      'INVALID_BASE_URL',
+      400,
+    );
+  }
+};
+
 const addApiKeyHeader = (request, z, bundle) => {
+  if (bundle && bundle.authData && bundle.authData.baseUrl) {
+    assertValidBaseUrl(z, bundle.authData.baseUrl);
+  }
   if (bundle && bundle.authData && bundle.authData.apiKey) {
     request.headers = request.headers || {};
     // Authorization is the documented contract. X-Lumenta-Api-Key is
@@ -47,4 +84,4 @@ const handleErrors = (response, z) => {
   throw new z.errors.Error(msg, body.error && body.error.code, response.status);
 };
 
-module.exports = { addApiKeyHeader, handleErrors };
+module.exports = { addApiKeyHeader, handleErrors, assertValidBaseUrl };

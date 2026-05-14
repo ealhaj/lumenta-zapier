@@ -42,6 +42,36 @@ test('authentication test hits /v1/zapier/me with both auth headers', async () =
   assert.ok(nock.isDone());
 });
 
+test('authentication test rejects a malformed baseUrl before making a request', async () => {
+  // D026 mitigation — assertValidBaseUrl runs in beforeRequest and
+  // refuses non-https, pathful, or credentialed URLs so a hostile
+  // override cannot redirect requests away from Lumenta. Nock is set
+  // up but should never be hit because validation fires first.
+  const hostile = nock('https://api.lumenta.test').get('/v1/zapier/me').reply(200, {});
+
+  await assert.rejects(
+    appTester(App.authentication.test, {
+      authData: { ...authData, baseUrl: 'http://api.lumenta.test' },
+    }),
+    /Invalid Base URL/,
+  );
+  await assert.rejects(
+    appTester(App.authentication.test, {
+      authData: { ...authData, baseUrl: 'https://evil.example/api' },
+    }),
+    /Invalid Base URL/,
+  );
+  await assert.rejects(
+    appTester(App.authentication.test, {
+      authData: { ...authData, baseUrl: 'https://attacker:pw@api.lumenta.test' },
+    }),
+    /Invalid Base URL/,
+  );
+
+  assert.equal(hostile.isDone(), false);
+  nock.cleanAll();
+});
+
 test('connectionLabel prefers name over email', () => {
   // The connectionLabel is a function on App.authentication; call it
   // with a synthesized bundle.
