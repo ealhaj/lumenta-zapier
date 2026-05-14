@@ -5,7 +5,6 @@ const { addApiKeyHeader, handleErrors } = require('./middleware');
 
 // Triggers — REST Hooks (subscribed by Zapier when a Zap is enabled).
 const messageReceived = require('./triggers/message-received');
-const newConversation = require('./triggers/new-conversation');
 const messageStatusUpdated = require('./triggers/message-status-updated');
 const broadcastCompleted = require('./triggers/broadcast-completed');
 const conversionRecorded = require('./triggers/conversion-recorded');
@@ -32,7 +31,6 @@ const recordConversion = require('./creates/record-conversion');
 // Searches — combinable with creates via Zapier's "Find or Create"
 // toggle so a Zap can resolve-or-make a row in one step.
 const findClientByPhone = require('./searches/find-client-by-phone');
-const findConversationByClient = require('./searches/find-conversation-by-client');
 const findTemplateByName = require('./searches/find-template-by-name');
 
 module.exports = {
@@ -50,7 +48,6 @@ module.exports = {
 
   triggers: {
     [messageReceived.key]: messageReceived,
-    [newConversation.key]: newConversation,
     [messageStatusUpdated.key]: messageStatusUpdated,
     [broadcastCompleted.key]: broadcastCompleted,
     [conversionRecorded.key]: conversionRecorded,
@@ -75,7 +72,6 @@ module.exports = {
 
   searches: {
     [findClientByPhone.key]: findClientByPhone,
-    [findConversationByClient.key]: findConversationByClient,
     [findTemplateByName.key]: findTemplateByName,
   },
 };

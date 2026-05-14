@@ -14,7 +14,6 @@ const performList = async (z, bundle) => {
 
 const SAMPLE = {
   id: 'msg_8c0e9f1234abcd',
-  conversationId: 'conv_a13fbeef',
   direction: 'outbound',
   status: 'delivered',
   providerMessageId: 'wamid.HBgL...',
@@ -45,7 +44,6 @@ module.exports = {
       { key: 'id', label: 'Message ID' },
       { key: 'status', label: 'New Status' },
       { key: 'direction', label: 'Direction' },
-      { key: 'conversationId', label: 'Conversation ID' },
       { key: 'providerMessageId', label: 'Provider Message ID' },
       { key: 'createdAt', label: 'Created At', type: 'datetime' },
       { key: 'sender__displayName', label: 'Sender Display Name' },

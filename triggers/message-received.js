@@ -19,7 +19,6 @@ const performList = async (z, bundle) => {
 
 const SAMPLE = {
   id: 'msg_8c0e9f1234abcd',
-  conversationId: 'conv_a13fbeef',
   direction: 'inbound',
   messageType: 'text',
   body: 'Hi, do you have this in stock?',
@@ -56,7 +55,6 @@ module.exports = {
     sample: SAMPLE,
     outputFields: [
       { key: 'id', label: 'Message ID' },
-      { key: 'conversationId', label: 'Conversation ID' },
       { key: 'direction', label: 'Direction' },
       { key: 'messageType', label: 'Message Type' },
       { key: 'body', label: 'Message Body' },
