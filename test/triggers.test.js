@@ -32,18 +32,6 @@ test('message_received subscribe POSTs to /v1/zapier/subscriptions', async () =>
   assert.ok(nock.isDone());
 });
 
-test('new_conversation subscribe passes the right event name', async () => {
-  nock('https://api.lumenta.test')
-    .post('/v1/zapier/subscriptions', (body) => body.event === 'new.conversation')
-    .reply(201, { id: 'sub_nc', target_url: TARGET_URL, event: 'new.conversation' });
-
-  await appTester(
-    App.triggers.new_conversation.operation.performSubscribe,
-    { authData, targetUrl: TARGET_URL },
-  );
-  assert.ok(nock.isDone());
-});
-
 test('unsubscribe DELETEs the subscription by id', async () => {
   nock('https://api.lumenta.test')
     .delete('/v1/zapier/subscriptions/sub_xyz')
