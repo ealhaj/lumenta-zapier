@@ -7,7 +7,7 @@
 const perform = async (z, bundle) => {
   const response = await z.request({
     url: `${bundle.authData.baseUrl}/v1/broadcasts`,
-    params: { status: 'completed', limit: 100 },
+    params: { status: 'COMPLETED', limit: 100 },
   });
   const rows = response.data && response.data.data ? response.data.data : [];
   return rows.map((b) => {
