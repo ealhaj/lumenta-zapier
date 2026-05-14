@@ -57,7 +57,7 @@ module.exports = {
       { key: 'templateName', label: 'Template Name' },
       { key: 'templateLanguage', label: 'Template Language' },
       { key: 'errorMessage', label: 'Error Message' },
-      { key: 'completedAt', label: 'Completed At' },
+      { key: 'completedAt', label: 'Completed At', type: 'datetime' },
     ],
   },
 };

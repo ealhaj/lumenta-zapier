@@ -39,6 +39,10 @@ module.exports = {
 
   authentication,
 
+  flags: {
+    cleanInputData: false,
+  },
+
   beforeRequest: [addApiKeyHeader],
   afterResponse: [handleErrors],
 

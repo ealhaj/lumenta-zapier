@@ -1,6 +1,6 @@
 {
   "name": "lumenta-zapier",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Lumenta integration for Zapier — connect WhatsApp Business messaging to 8,000+ apps.",
   "main": "index.js",

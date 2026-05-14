@@ -47,7 +47,7 @@ module.exports = {
       { key: 'direction', label: 'Direction' },
       { key: 'conversationId', label: 'Conversation ID' },
       { key: 'providerMessageId', label: 'Provider Message ID' },
-      { key: 'createdAt', label: 'Created At' },
+      { key: 'createdAt', label: 'Created At', type: 'datetime' },
       { key: 'sender__displayName', label: 'Sender Display Name' },
     ],
   },

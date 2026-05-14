@@ -38,7 +38,7 @@ module.exports = {
       { key: 'id', label: 'Client ID' },
       { key: 'phoneNumber', label: 'Phone Number' },
       { key: 'profileName', label: 'Profile Name' },
-      { key: 'createdAt', label: 'Created At' },
+      { key: 'createdAt', label: 'Created At', type: 'datetime' },
     ],
   },
 };

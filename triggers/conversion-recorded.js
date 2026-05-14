@@ -58,7 +58,7 @@ module.exports = {
       { key: 'broadcastId', label: 'Broadcast ID' },
       { key: 'eventType', label: 'Event Type' },
       { key: 'recipient', label: 'Recipient Phone' },
-      { key: 'createdAt', label: 'Created At' },
+      { key: 'createdAt', label: 'Created At', type: 'datetime' },
       { key: 'broadcast__templateName', label: 'Template Name' },
       { key: 'client__id', label: 'Client ID' },
       { key: 'client__profileName', label: 'Client Profile Name' },

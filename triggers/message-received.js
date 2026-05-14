@@ -62,7 +62,7 @@ module.exports = {
       { key: 'body', label: 'Message Body' },
       { key: 'mediaUrl', label: 'Media URL' },
       { key: 'mediaMimeType', label: 'Media MIME Type' },
-      { key: 'createdAt', label: 'Created At' },
+      { key: 'createdAt', label: 'Created At', type: 'datetime' },
       { key: 'sender__id', label: 'Sender ID' },
       { key: 'sender__displayName', label: 'Sender Display Name' },
       { key: 'sender__phoneNumber', label: 'Sender Phone Number' },

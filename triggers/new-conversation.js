@@ -53,9 +53,9 @@ module.exports = {
     sample: SAMPLE,
     outputFields: [
       { key: 'id', label: 'Conversation ID' },
-      { key: 'createdAt', label: 'Created At' },
-      { key: 'lastMessageAt', label: 'Last Message At' },
-      { key: 'autoReplied', label: 'Auto Replied' },
+      { key: 'createdAt', label: 'Created At', type: 'datetime' },
+      { key: 'lastMessageAt', label: 'Last Message At', type: 'datetime' },
+      { key: 'autoReplied', label: 'Auto Replied', type: 'boolean' },
       { key: 'sender__displayName', label: 'Sender Display Name' },
       { key: 'sender__phoneNumber', label: 'Sender Phone Number' },
       { key: 'client__phoneNumber', label: 'Client Phone Number' },
