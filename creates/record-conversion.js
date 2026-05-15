@@ -44,7 +44,7 @@ module.exports = {
     ],
     perform: async (z, bundle) => {
       const response = await z.request({
-        url: `${bundle.authData.baseUrl}/v1/broadcasts/${bundle.inputData.broadcastId}/conversions`,
+        url: `${bundle.authData.baseUrl}/v1/campaigns/${bundle.inputData.broadcastId}/conversions`,
         method: 'POST',
         body: {
           recipient: bundle.inputData.recipient,
@@ -56,6 +56,7 @@ module.exports = {
     },
     sample: {
       id: 'cv_xyz789',
+      campaignId: 'bc_abc123',
       broadcastId: 'bc_abc123',
       eventType: 'converted',
       recipient: '+201234567890',

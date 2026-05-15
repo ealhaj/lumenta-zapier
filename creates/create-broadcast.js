@@ -1,4 +1,6 @@
 module.exports = {
+  // Key kept as `create_broadcast` so Zaps built before the broadcasts →
+  // campaigns rename keep working — Zapier identifies actions by key.
   key: 'create_broadcast',
   noun: 'Campaign',
   display: {
@@ -8,7 +10,12 @@ module.exports = {
   },
   operation: {
     inputFields: [
-      { key: 'senderId', label: 'Sender', required: true, dynamic: 'senders.id.label' },
+      {
+        key: 'senderId',
+        label: 'Sender',
+        required: true,
+        dynamic: 'senders.id.label',
+      },
       {
         key: 'segmentId',
         label: 'Recipient segment',
@@ -21,29 +28,17 @@ module.exports = {
         required: true,
         dynamic: 'templates.id.label',
       },
-      {
-        key: 'templateLanguage',
-        label: 'Template language',
-        required: false,
-        default: 'en',
-      },
-      {
-        key: 'name',
-        label: 'Campaign name',
-        required: false,
-        helpText: 'Optional internal label shown in the Lumenta dashboard.',
-      },
     ],
     perform: async (z, bundle) => {
       const response = await z.request({
-        url: `${bundle.authData.baseUrl}/v1/broadcasts/templates`,
+        url: `${bundle.authData.baseUrl}/v1/campaigns/templates`,
         method: 'POST',
         body: {
           senderId: bundle.inputData.senderId,
-          segmentId: bundle.inputData.segmentId,
           templateId: bundle.inputData.templateId,
-          templateLanguage: bundle.inputData.templateLanguage || 'en',
-          name: bundle.inputData.name,
+          // The combined recipient picker on the API takes segments and
+          // individual clients; a Zap supplies a single segment.
+          recipients: { segmentIds: [bundle.inputData.segmentId] },
         },
       });
       return response.data;

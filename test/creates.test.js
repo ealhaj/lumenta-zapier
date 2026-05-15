@@ -76,9 +76,9 @@ test('update_client PATCHes profileName', async () => {
   assert.equal(result.profileName, 'B');
 });
 
-test('record_conversion POSTs to /broadcasts/:id/conversions', async () => {
+test('record_conversion POSTs to /campaigns/:id/conversions', async () => {
   nock('https://api.lumenta.test')
-    .post('/v1/broadcasts/bc_1/conversions', (body) => {
+    .post('/v1/campaigns/bc_1/conversions', (body) => {
       assert.equal(body.recipient, '201234567890');
       assert.equal(body.eventType, 'converted');
       return true;
@@ -94,5 +94,26 @@ test('record_conversion POSTs to /broadcasts/:id/conversions', async () => {
       eventData: { orderTotal: 199.99 },
     },
   });
+  assert.ok(nock.isDone());
+});
+
+test('create_broadcast POSTs the campaign payload with nested recipients', async () => {
+  nock('https://api.lumenta.test')
+    .post('/v1/campaigns/templates', (body) => {
+      assert.equal(body.senderId, 'snd_1');
+      assert.equal(body.templateId, 'tpl_1');
+      assert.deepEqual(body.recipients, { segmentIds: ['seg_1'] });
+      return true;
+    })
+    .reply(201, { id: 'bc_1', status: 'processing' });
+
+  const result = await appTester(
+    App.creates.create_broadcast.operation.perform,
+    {
+      authData,
+      inputData: { senderId: 'snd_1', segmentId: 'seg_1', templateId: 'tpl_1' },
+    },
+  );
+  assert.equal(result.id, 'bc_1');
   assert.ok(nock.isDone());
 });

@@ -1,12 +1,12 @@
 /**
  * Hidden trigger backing the `dynamic: 'broadcasts.id.label'` dropdown
- * in the Record Broadcast Conversion action. Returns recently
- * completed broadcasts since conversions are only meaningful for
- * broadcasts that have actually been delivered.
+ * in the Record Campaign Conversion action. Returns recently completed
+ * campaigns since conversions are only meaningful for campaigns that
+ * have actually been delivered.
  */
 const perform = async (z, bundle) => {
   const response = await z.request({
-    url: `${bundle.authData.baseUrl}/v1/broadcasts`,
+    url: `${bundle.authData.baseUrl}/v1/campaigns`,
     params: { status: 'completed', limit: 100 },
   });
   const rows = response.data && response.data.data ? response.data.data : [];
