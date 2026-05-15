@@ -1,6 +1,6 @@
 /**
  * Hidden trigger backing the segment dropdown in segment-membership
- * actions and create-broadcast.
+ * actions and the Create Campaign action.
  */
 const perform = async (z, bundle) => {
   const response = await z.request({

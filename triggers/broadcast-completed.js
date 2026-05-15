@@ -6,7 +6,7 @@ const {
 
 const performList = async (z, bundle) => {
   const response = await z.request({
-    url: `${bundle.authData.baseUrl}/v1/broadcasts`,
+    url: `${bundle.authData.baseUrl}/v1/campaigns`,
     params: { status: 'completed', limit: 3 },
   });
   return (response.data && response.data.data) || [];
@@ -42,7 +42,7 @@ module.exports = {
   },
   operation: {
     type: 'hook',
-    performSubscribe: subscribeHook('broadcast.completed'),
+    performSubscribe: subscribeHook('campaign.completed'),
     performUnsubscribe: unsubscribeHook(),
     perform: parsePayload,
     performList,

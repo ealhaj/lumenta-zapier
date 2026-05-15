@@ -14,13 +14,16 @@ const performList = async (_z, _bundle) => [];
 
 const SAMPLE = {
   id: 'cv_xyz789',
+  campaignId: 'bc_abc123',
+  // Deprecated alias of campaignId — still emitted for Zaps built before
+  // the broadcasts → campaigns rename.
   broadcastId: 'bc_abc123',
   eventType: 'converted',
   recipient: '+201234567890',
   messageSid: 'wamid.HBgL...',
   eventData: { orderTotal: 199.99, currency: 'USD' },
   createdAt: '2026-05-14T11:30:00.000Z',
-  broadcast: {
+  campaign: {
     id: 'bc_abc123',
     templateName: 'spring_sale',
     templateLanguage: 'en',
@@ -55,11 +58,11 @@ module.exports = {
     sample: SAMPLE,
     outputFields: [
       { key: 'id', label: 'Conversion ID' },
-      { key: 'broadcastId', label: 'Campaign ID' },
+      { key: 'campaignId', label: 'Campaign ID' },
       { key: 'eventType', label: 'Event Type' },
       { key: 'recipient', label: 'Recipient Phone' },
       { key: 'createdAt', label: 'Created At', type: 'datetime' },
-      { key: 'broadcast__templateName', label: 'Template Name' },
+      { key: 'campaign__templateName', label: 'Template Name' },
       { key: 'client__id', label: 'Client ID' },
       { key: 'client__profileName', label: 'Client Profile Name' },
     ],
